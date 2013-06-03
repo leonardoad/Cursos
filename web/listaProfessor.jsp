@@ -34,13 +34,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css"  href="estilos.css">
-        <script src="validator.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css"  href="css/estilos.css"> 
         <title>Cladimir, Leonardo Danieli - 17/06/2013</title>
     </head>
     <body>
         <h1>Lista Professores!</h1>
         
+        <a href="index.xhtml">Voltar</a><br />
         <a href="cadProfessor.jsp">Novo Professor!</a>
         <ol type="1">
             <%

@@ -17,8 +17,6 @@
     String oper = request.getParameter("oper");
     String id = request.getParameter("id");
 
-    out.println(oper + " oper!");
-
     if (oper != null) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -45,14 +43,13 @@
                 ps.setFloat(4, Float.parseFloat(custohora));
 
                 ps.executeUpdate();
-                
-                
+
+
                 out.print("Professor cadastrado com sucesso!");
 
 //                conn.close();
-            } 
-        }else
-        if (oper.equals("U")) {
+            }
+        } else if (oper.equals("U")) {
 
             nome = request.getParameter("nome");
             telefone = request.getParameter("telefone");
@@ -64,9 +61,9 @@
                 String sql = "UPDATE professor SET "
                         + "nome = ?,email = ?,telefone = ?,custohora = ? "
                         + "WHERE id = ?";
-                
+
                 out.print("Dados atualizados com sucesso!");
-                
+
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, nome);
                 ps.setString(2, email);
@@ -77,21 +74,20 @@
                 ps.executeUpdate();
 
 //                conn.close();
-            } 
-        }else
-        if (oper.equals("E")) {
-                 id = request.getParameter("id");
-                String sql = "select * from professor where id=" + id;
-
-                ps = conn.prepareStatement(sql);
-                rs = ps.executeQuery();
-                rs.next();
-                nome = rs.getString("nome");
-                telefone = rs.getString("telefone");
-                email = rs.getString("email");
-                custohora = rs.getString("custohora");
-                oper = "U";
             }
+        } else if (oper.equals("E")) {
+            id = request.getParameter("id");
+            String sql = "select * from professor where id=" + id;
+
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rs.next();
+            nome = rs.getString("nome");
+            telefone = rs.getString("telefone");
+            email = rs.getString("email");
+            custohora = rs.getString("custohora");
+            oper = "U";
+        }
     } else {
         oper = "C";
     }
@@ -101,13 +97,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css"  href="estilos.css">
-        <script src="validator.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css"  href="css/estilos.css">
+        <script src="js/validator.js" type="text/javascript"></script>
         <title>Cladimir, Leonardo Danieli - 17/06/2013</title>
     </head>
     <body>
         <h1>Cadastro de Professor!</h1>
- 
+
         <a href="listaProfessor.jsp">Voltar</a><br /><br />
         <form id="form1" method="POST" action="cadProfessor.jsp">
             <div id="container">
@@ -132,12 +128,12 @@
                         </tr>
                     </table>
                 </fieldset>
-           
-            <input type="hidden" name="oper" id="oper" value="<% out.print(oper);%>" />
-            <input type="hidden" name="id" id="id" value="<% out.print(id);%>" />
-            <input type="button" onclick="validarProfessor();" value="Enviar" /> 
-            <input type="reset" value="Limpar" />
- </div>
+
+                <input type="hidden" name="oper" id="oper" value="<% out.print(oper);%>" />
+                <input type="hidden" name="id" id="id" value="<% out.print(id);%>" />
+                <input type="button" onclick="validarProfessor();" value="Enviar" /> 
+                <input type="reset" value="Limpar" />
+            </div>
         </form>
     </body>
 </html>
