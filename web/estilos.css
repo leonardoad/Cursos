@@ -1,0 +1,30 @@
+/* 
+    Document   : estilos
+    Created on : 29/04/2013, 10:54:28
+    Author     : 770600067
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+h1{ 
+    color: #fc0
+}
+body {color:darkgreen;
+      background-color:azure;
+      font-family: Arial;
+      font-size: 11px;
+      
+}
+.readonly{
+    background-color: #eee;
+}
+input{
+    border: 1px solid #ddd;
+}
+
+#container{
+    width: 900px;
+}
+#container fieldset{
+    width: 399px
+}
