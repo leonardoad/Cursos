@@ -1,0 +1,242 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.2.2
+-- Dumped by pg_dump version 9.2.2
+-- Started on 2013-06-03 11:21:46
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 1940 (class 1262 OID 24576)
+-- Name: cursos; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE cursos WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Portuguese_Brazil.1252' LC_CTYPE = 'Portuguese_Brazil.1252';
+
+
+ALTER DATABASE cursos OWNER TO postgres;
+
+\connect cursos
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 172 (class 3079 OID 11727)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1943 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 169 (class 1259 OID 24579)
+-- Name: curso; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE curso (
+    id integer NOT NULL,
+    id_professor integer,
+    nome character varying,
+    descricao character varying,
+    datainicio date,
+    datafim date,
+    horainicio time without time zone,
+    horafim time without time zone,
+    conteudo text,
+    valor numeric(12,2)
+);
+
+
+ALTER TABLE public.curso OWNER TO postgres;
+
+--
+-- TOC entry 168 (class 1259 OID 24577)
+-- Name: curso_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE curso_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.curso_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1944 (class 0 OID 0)
+-- Dependencies: 168
+-- Name: curso_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE curso_id_seq OWNED BY curso.id;
+
+
+--
+-- TOC entry 171 (class 1259 OID 24590)
+-- Name: professor; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE professor (
+    id integer NOT NULL,
+    email character varying(50) DEFAULT NULL::character varying,
+    telefone character varying(15) DEFAULT NULL::character varying,
+    custohora numeric(12,2),
+    nome character varying(50)
+);
+
+
+ALTER TABLE public.professor OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 24588)
+-- Name: professor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE professor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.professor_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1945 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: professor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE professor_id_seq OWNED BY professor.id;
+
+
+--
+-- TOC entry 1923 (class 2604 OID 24582)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY curso ALTER COLUMN id SET DEFAULT nextval('curso_id_seq'::regclass);
+
+
+--
+-- TOC entry 1924 (class 2604 OID 24593)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY professor ALTER COLUMN id SET DEFAULT nextval('professor_id_seq'::regclass);
+
+
+--
+-- TOC entry 1933 (class 0 OID 24579)
+-- Dependencies: 169
+-- Data for Name: curso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 1946 (class 0 OID 0)
+-- Dependencies: 168
+-- Name: curso_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('curso_id_seq', 1, false);
+
+
+--
+-- TOC entry 1935 (class 0 OID 24590)
+-- Dependencies: 171
+-- Data for Name: professor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (2, 'valdir@gmail.com', NULL, NULL, 'Valdir');
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (3, 'valdir@gmail.com', NULL, NULL, 'Valdir');
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (4, 'valdir@gmail.com', NULL, NULL, 'Valdir');
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (5, NULL, NULL, NULL, NULL);
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (6, 'manu@foo', '9090 999909099', 700.00, 'Manuerla');
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (1, 'valdir@gmail.com', '888888888', 250.00, 'Valdir1');
+INSERT INTO professor (id, email, telefone, custohora, nome) VALUES (7, 'leo@gmail', '88888888888', 66.00, 'Leonardo');
+
+
+--
+-- TOC entry 1947 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: professor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('professor_id_seq', 7, true);
+
+
+--
+-- TOC entry 1928 (class 2606 OID 24587)
+-- Name: curso_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY curso
+    ADD CONSTRAINT curso_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1930 (class 2606 OID 24597)
+-- Name: professor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY professor
+    ADD CONSTRAINT professor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1931 (class 2606 OID 24603)
+-- Name: curso_id_professor_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY curso
+    ADD CONSTRAINT curso_id_professor_fkey FOREIGN KEY (id_professor) REFERENCES professor(id);
+
+
+--
+-- TOC entry 1942 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-06-03 11:21:48
+
+--
+-- PostgreSQL database dump complete
+--
+
