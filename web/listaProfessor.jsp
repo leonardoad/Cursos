@@ -97,9 +97,9 @@
     <body>
         <h1>Lista Professores!</h1>
 
-        <a href="index.xhtml">Voltar</a><br />
-        <a href="cadProfessor.jsp">Novo Professor!</a>
-
+<input type="button" value="Voltar!" onclick="window.location='index.xhtml'" />
+<input type="button" value="Novo Professor!" onclick="window.location='cadProfessor.jsp'" />
+          
         <table id="fixed-table1" class="tsc_fixed_tables" width="400px" border="0" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>

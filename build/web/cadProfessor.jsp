@@ -45,7 +45,7 @@
                 ps.executeUpdate();
 
 
-                out.print("Professor cadastrado com sucesso!");
+                out.print("<script>window.location='listaProfessor.jsp'</script>");
 
 //                conn.close();
             }
@@ -104,7 +104,7 @@
     <body>
         <h1>Cadastro de Professor!</h1>
 
-        <a href="listaProfessor.jsp">Voltar</a><br /><br />
+         
         <form id="form1" method="POST" action="cadProfessor.jsp">
             <div id="container">
                 <fieldset class="item"  >
@@ -133,6 +133,7 @@
                 <input type="hidden" name="id" id="id" value="<% out.print(id);%>" />
                 <input type="button" onclick="validarProfessor();" value="Enviar" /> 
                 <input type="reset" value="Limpar" />
+                <input type="button" value="Voltar" onclick="window.location='listaProfessor.jsp'" />
             </div>
         </form>
     </body>
