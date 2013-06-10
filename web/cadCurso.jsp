@@ -147,7 +147,7 @@
     <body>
         <h1>Cadastro de Curso!</h1>
 
-        <a href="listaCurso.jsp">Voltar</a><br /><br />
+         
         <form id="form1" method="POST" action="cadCurso.jsp">
             <div id="container">
                 <fieldset class="item"  >
@@ -204,7 +204,8 @@
                 <input type="hidden" name="id" id="id" value="<% out.print(id);%>"/>
                 <input type="button" onclick="validarProfessor();" value="Enviar" /> 
                 <input type="reset" value="Limpar" />
-            </div>
+                <input type="button" value="Voltar" onclick="window.location='listaCurso.jsp'" />
+           </div>
         </form>
     </body>
 </html>
