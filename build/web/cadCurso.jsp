@@ -33,28 +33,42 @@
 
         if (oper.equals("C")) {
 
-            id_professor = request.getParameter("id_professor");
-            nome = request.getParameter("nome");
-            descricao = request.getParameter("descricao");
-            datainicio = request.getParameter("datainicio");
-            datafim = request.getParameter("datafim");
-            horainicio = request.getParameter("hotainicio");
-            horafim = request.getParameter("horafim");
-            valor = request.getParameter("valor");
-
+//            id_professor = request.getParameter("id_professor");
+//            nome = request.getParameter("nome");
+//            descricao = request.getParameter("descricao");
+//            datainicio = request.getParameter("datainicio");
+//            datafim = request.getParameter("datafim");
+//            horainicio = request.getParameter("hotainicio");
+//            horafim = request.getParameter("horafim");
+//            conteudo = request.getParameter("conteudo");
+//            valor = request.getParameter("valor");
             
+
+            id_professor = "1";
+            nome = "cladi";
+            descricao = "cladi";
+            datainicio = "1975-01-18";
+            datafim = "180175";
+            horainicio = "18:01";
+            horafim = "18:01";
+            conteudo = "cladi";
+            valor = "1200";
+
             if (!nome.equals(null) && !id_professor.equals(null)) {
 
-                String sql = "INSERT INTO professor (nome,descricao,datainicio,datafim,horainicio,horafim,valor) values (?,?,?,?,?,?,?)";
+                String sql = "INSERT INTO curso (id_professor, nome,descricao,datainicio,datafim,horainicio,horafim,conteudo, valor) values (?,?,?,?,?,?,?,?,?)";
 
                 ps = conn.prepareStatement(sql);
-                ps.setString(1, nome);
-                ps.setString(2, descricao);
-                ps.setString(3, datainicio);
-                ps.setString(4, datafim);
-                ps.setString(5, horainicio);
-                ps.setString(6, horafim);
-                ps.setFloat(7, Float.parseFloat(valor));
+                ps.setInt(1, Integer.parseInt(id_professor));
+                ps.setString(2, nome);
+                ps.setString(3, descricao);
+                ps.setString(4, datainicio);
+                ps.setString(5, datafim);
+                ps.setString(6, horainicio);
+                ps.setString(7, horafim);
+                ps.setString(8, conteudo);
+                ps.setFloat(9, Float.parseFloat(valor));
+                
 
                 ps.executeUpdate();
 
@@ -148,7 +162,7 @@
         <h1>Cadastro de Curso!</h1>
 
         <a href="listaCurso.jsp">Voltar</a><br /><br />
-        <form id="form1" method="POST" action="cadCurso.jsp">
+        <form id="FrmCurso" method="POST" action="cadCurso.jsp">
             <div id="container">
                 <fieldset class="item"  >
                     <legend> Dados do Curso</legend>
@@ -202,7 +216,7 @@
                             
                 <input type="hidden" name="oper" id="oper" value="<% out.print(oper);%>" />
                 <input type="hidden" name="id" id="id" value="<% out.print(id);%>"/>
-                <input type="button" onclick="validarProfessor();" value="Enviar" /> 
+                <input type="button" onclick="validarCurso();" value="Enviar" /> 
                 <input type="reset" value="Limpar" />
             </div>
         </form>

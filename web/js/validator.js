@@ -1,4 +1,19 @@
- 
+
+function validarCurso()
+        {
+            
+		if(document.getElementById('nome').value == '')
+                {
+                    alert('Preencha o campo Nome do Curso');
+                    document.getElementById('nome').focus();
+                    return false;
+                 }else{
+                     document.getElementById('FrmCurso').submit();
+                    
+                 }
+                 
+        }
+        
 function validarProfessor()
         {
             
