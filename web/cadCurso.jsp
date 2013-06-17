@@ -161,8 +161,13 @@
     <body>
         <h1>Cadastro de Curso!</h1>
 
+<<<<<<< HEAD
         <a href="listaCurso.jsp">Voltar</a><br /><br />
         <form id="FrmCurso" method="POST" action="cadCurso.jsp">
+=======
+         
+        <form id="form1" method="POST" action="cadCurso.jsp">
+>>>>>>> 501cf65e0761fa35eaeac45b68c7ede17dc27f3f
             <div id="container">
                 <fieldset class="item"  >
                     <legend> Dados do Curso</legend>
@@ -218,7 +223,8 @@
                 <input type="hidden" name="id" id="id" value="<% out.print(id);%>"/>
                 <input type="button" onclick="validarCurso();" value="Enviar" /> 
                 <input type="reset" value="Limpar" />
-            </div>
+                <input type="button" value="Voltar" onclick="window.location='listaCurso.jsp'" />
+           </div>
         </form>
     </body>
 </html>
